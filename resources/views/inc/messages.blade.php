@@ -10,4 +10,8 @@
     </div>
 @endif 
 
-@if()
+@if(session('success'))
+    <div>
+        {{session('success')}}
+    </div>
+@endif

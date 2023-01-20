@@ -51,9 +51,20 @@ sudo chown -R admin1:admin1 ~/myproject/car-club-app03/ && sudo find ~/myproject
 
 
 sudo chown -R admin1:admin1 ~/myproject/car-club-app03/
-sudo find ~/myproject/car-club-app03/ -type d -exec chmod 775 {} \;
-sudo find ~/myproject/car-club-app03/ -type f -exec chmod 664 {} \;
+sudo chmod -R 775 ~/myproject/car-club-app03/
+
+sudo find ~/myproject/car-club-app03/ -type d -exec chmod 644 {} \;
+sudo find ~/myproject/car-club-app03/ -type f -exec chmod 755 {} \;
+
+sudo find ./ -type d -exec chmod 644 {} \; //нежелательно, уст на все директории
+sudo find ./ -type f -exec chmod 755 {} \; // файлы
 
 
 //База данных
-./vendor/bin/sail mysql -u root -h 127.0.0.1 -P 3306В
+./vendor/bin/sail mysql -u root -h 127.0.0.1 -P 3306
+
+
+
+docker ps//просмотр запущеных контейнеров
+
+log//читать 

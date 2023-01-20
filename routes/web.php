@@ -17,7 +17,7 @@ use App\Http\Controllers\ClientController;
 |
 */
 
-/*Route::get('/', function () {
+/*Route::get('/', function () { 
     return view('index');
 });*/
 Route::get('/', function () {
@@ -76,7 +76,12 @@ Route::get('/receivers/clients', function () {
     return view('role/receivers/client');
 }) -> name('client');
 
+Route::get('/receivers/clients/delet/{id}', [ClientController::class, 'deletClient']) -> name('client-one-delet');
+
+Route::get('/receivers/clients/{id?}/update', [ClientController::class, 'updateClient']) -> name('client-one-update');
+
+Route::get('/receivers/clients', [ClientController::class, 'allData']) -> name('client');
 
 Route::get('/new_client', [ClientController::class, 'create']) -> name('newClient');
 
-Route::post('/client_add', [ClientController::class, 'clientAdd']) -> name('newClientAdd');
+Route::post('/client_add', [ClientController::class, 'store']) -> name('newClientAdd');

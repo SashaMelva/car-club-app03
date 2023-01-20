@@ -53,14 +53,16 @@ a:focus{
     width: 100%;
     text-align: left;
 
-    border: var(--primary-rest) solid 3px;
+    border: var(--primary-rest) solid 0px;
     border-collapse: collapse;
 }
 .td, th{
     padding: 0px 5px;
     border: var(--primary-rest) solid 3px;
 }
-
+.last-column-for-btn{
+    border: var(--primary-rest) solid 0px;
+}
 .btn{
     width: 100%;
     font-size: 16px;
@@ -284,7 +286,19 @@ li{
     top: 193px;
     right: 26px;
 }
-
+.img-btn-fon{
+    display: block;
+    width: auto;
+    background-color: transparent;
+    border: 0px;
+    line-height: 0px;
+    letter-spacing: 0px;
+    padding: 2px;
+}
+.img-btn-fon:hover{
+    background-color: var(--primary-light);
+    
+}
 .btn-new-user-open{
     top: 32.6em;
     right: 22.4em;

@@ -22,8 +22,9 @@ class ClientController extends Controller
     }
 
 
-    public function clientAdd(ClientRequest $request)
+    public function store(ClientRequest $request)
     {    
+       // $client = DB::select('select * from client where active = ?', [1]);
         $client = new Client();
         $client->name = $request->input('name');
         $client->surname = $request->input('surname');
@@ -32,7 +33,19 @@ class ClientController extends Controller
         
         $client->save();
 
-        return redirect()->route('client');
+        return redirect()->route('client')->with("Кликет добавлен в базу данных");
+    } 
+
+    public function allData() {
+        return view('role/receivers/client', ['clientsData' => Client::all()]);
     }
 
+    public function deletClient($id) {
+
+    }
+
+    public function updateClient($id) {
+        $client = new Client();
+        return view('role/receivers/updateClient', ['clientData' => $client->find($id)]);
+    }
 }

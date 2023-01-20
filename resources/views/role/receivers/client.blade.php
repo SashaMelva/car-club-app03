@@ -4,6 +4,7 @@
 
 @section('main-content')
     <div class="list-content content-whith-button">
+    
         <table class="tbl-style-light">
             <caption>Клиенты</caption>
             <tr>
@@ -13,12 +14,28 @@
                 <th>Отчество</th>
                 <th>Номер телефона</th>
                 <th>Количество заказов</th>
+                <th class="last-column-for-btn"></th>
+                <th class="last-column-for-btn"></th>
             </tr>
+            @foreach($clientsData as $clientData)
+            <tr>
+                <th>{{ $clientData-> id}}</th>
+                <th>{{ $clientData-> name}}</th>
+                <th>{{ $clientData-> surname}}</th>
+                <th>{{ $clientData-> patronymic}}</th>
+                <th>{{ $clientData-> phone}}</th>
+                <th>0</th>
+                <th class="last-column-for-btn"><a class="btn img-btn-fon"><img class="password-img-btn" alt="Удалить клиента" src="{{ Vite::asset('resources/images/rejected.png') }}"></a></th>
+                <th class="last-column-for-btn"><a href="{{ route('client-one-update', $clientData-> id) }}" class="btn img-btn-fon"><img class="password-img-btn" alt="Изменить данные о клиенте" src="{{ Vite::asset('resources/images/change.png') }}"></a></th>
+            </tr>
+            @endforeach
         </table>
         <div class="menu-list-content">
             <a href="{{ route('newClient') }}" class="btn btn-light btn-a">Создать</a>
         </div>
+    
     </div>
+    
 @endsection
 
 @section('header')

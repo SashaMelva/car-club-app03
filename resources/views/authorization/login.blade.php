@@ -50,7 +50,7 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />   
         </form>
         
-        <button class="btn-chk-password btn-chk-password-close" onclick="passwordChecked()"><img class="password-img-btn" src="{{ Vite::asset('resources/images/abstract-1152.png')}}"></button>
+        <button class="btn-chk-password btn-chk-password-close" onclick="passwordChecked()"><img class="password-img-btn" src="{{ Vite::asset('resources/images/abstract-1152.png') }}"></button>
        
         <form class="frm-authoriz test-frm-authoriz ">
             <label>Кто ты?</label>
