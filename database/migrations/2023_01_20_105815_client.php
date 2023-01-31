@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('surname', 80);
             $table->string('patronymic', 80)->nullable();
             $table->char('phone', 20);
+            $table->timestamps();
         });
     }
 

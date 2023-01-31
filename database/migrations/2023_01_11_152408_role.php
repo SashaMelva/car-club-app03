@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('role_name', 20);
             $table->text('description', 240)->nullable();
+            $table->timestamps();
         });
 
         

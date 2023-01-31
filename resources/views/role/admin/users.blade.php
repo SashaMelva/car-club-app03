@@ -13,12 +13,26 @@
                 <th rowspan="2">Пароль</th>
                 <th rowspan="2">Категория</th>
                 <th rowspan="2">Фото</th>
+                <th class="last-column-for-btn"></th>
             </tr>
             <tr>
                 <th>Фамилия</th>
                 <th>Имя</th>
                 <th>Отчество</th>
             </tr>
+            <!--foreach
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th class="last-column-for-btn"><a class="btn img-btn-fon"><img class="password-img-btn" alt="Открыть профиль сотрудника" src="{{ Vite::asset('resources/images/free-icon-profile.png') }}"></a></th>
+            </tr>
+            endforeach-->
         </table>
         <div class="menu-list-content">
             <a href="{{ route('adminNewUser') }}" class="btn btn-light btn-a">Добавить</a>

@@ -68,3 +68,11 @@ sudo find ./ -type f -exec chmod 755 {} \; // файлы
 docker ps//просмотр запущеных контейнеров
 
 log//читать 
+
+
+//mysql
+
+show databases;
+use jeka
+show tables;
+SHOW COLUMNS FROM

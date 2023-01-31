@@ -41,7 +41,7 @@
                         </label>
                     </div>
                 </div>
-            <a href="{{ route('adminUsers') }}" class="btn btn-a btn-dark btn-submit btn-revoke btn-list">Отмена</a>
+            <a href="{{ route('adminUsers') }}" class="btn btn-a btn-dark btn-submit btn-revoke-for-user btn-list">Отмена</a>
             <button class="btn btn-dark btn-submit btn-save btn-list">Сохранить</button>
         </div>
         <button class="btn-chk-password btn-new-user-close" onclick="passwordChecked()"><img class="password-img-btn" src="{{ Vite::asset('resources/images/abstract-1152.png')}}"></button>

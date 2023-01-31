@@ -6,7 +6,7 @@
 <section class="list-content content-frm-register">
     <div class="form-register-users-skelet">
         <legend class="legend-form legend-new-user">Обновление аккаунта клиент</legend>
-            <form class="frm-new-user" method="POST" action="{{ route('newClientAdd') }}">
+            <form class="frm-new-user" method="POST" action="{{ route('clientUpdateSubmit', $clientData-> id) }}">
                 @csrf
                 <p class="txt-input-form">Введите данные о клиенте</p>
                 <label for="name" class="txt-input-form">Имя</label>
@@ -22,6 +22,8 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />   
             </form>
         <a href="{{ route('client') }}" class="btn btn-a btn-dark btn-revoke btn-list">Отмена</a>
+      
+        
     </div>
 </section>
    

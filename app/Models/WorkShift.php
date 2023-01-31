@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Work extends Model
+class WorkShift extends Model
 {
-    protected $table = 'work';
+    protected $table = 'work_shift';
 }
- 

@@ -13,14 +13,14 @@
                 <th rowspan="2">Статус</th>
             </tr>
             <tr>
-                <th>Открытия</th>
-                <th>Закрытия</th>
-                <th>Рабочий профиль</th>
+                <th>Начало смены</th>
+                <th>Конец семены</th>
                 <th>ФИО</th>
+                <th>Рабочий профиль</th>
             </tr>
         </table>
         <div class="menu-list-content">
-            <button class="btn btn-light btn-exit btn-list">Создать новую смену</button>
+            <a href="{{ route('newWorkShift') }}" class="btn btn-light btn-a">Создать смену</a>
         </div>
     </div>
 @endsection

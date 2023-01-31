@@ -352,7 +352,7 @@ li{
 .form-register-users-skelet{
     display: grid;
     grid-template-columns: min-content max-content;
-    grid-template-rows: max-content max-content 1fr;
+    grid-template-rows: max-content max-content;
     margin: 0px;
     padding: 10px 0px;
 }
@@ -371,9 +371,15 @@ li{
     grid-row: 2 / 3;
     grid-column: 2 / 3; 
 }
-.btn-revoke{
-    grid-row: 3 / 4;
+.btn-revoke-for-user{
     grid-column: 2 / 3;
+    height: 2em;
+}
+.btn-revoke{
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    margin-top: 23.5em;
+    height: 2em;
 }
 .btn-save{
     grid-row: 3 / 4;

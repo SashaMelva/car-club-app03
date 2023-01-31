@@ -16,16 +16,15 @@ class ClientController extends Controller
  * @return Illuminate\Http\Response
  */
     
-    public function create() 
-    {
+    public function create() {
        return view('role/receivers/newClient');
     }
 
 
-    public function store(ClientRequest $request)
-    {    
+    public function store(ClientRequest $request) {    
        // $client = DB::select('select * from client where active = ?', [1]);
         $client = new Client();
+        
         $client->name = $request->input('name');
         $client->surname = $request->input('surname');
         $client->patronymic = $request->input('patronymic');
@@ -33,7 +32,7 @@ class ClientController extends Controller
         
         $client->save();
 
-        return redirect()->route('client')->with("Кликет добавлен в базу данных");
+        return redirect()->route('client')->with("Клиет успешно создан");
     } 
 
     public function allData() {
@@ -41,11 +40,25 @@ class ClientController extends Controller
     }
 
     public function deletClient($id) {
-
+        Client::find($id)->delete();
+        return view('role/receivers/client', ['clientsData' => Client::all()]);
     }
 
     public function updateClient($id) {
         $client = new Client();
         return view('role/receivers/updateClient', ['clientData' => $client->find($id)]);
+    }
+
+    public function updateClientSubmit($id, ClientRequest $request) {
+        $client = Client::find($id);
+        
+        $client->name = $request->input('name');
+        $client->surname = $request->input('surname');
+        $client->patronymic = $request->input('patronymic');
+        $client->phone = $request->input('phone');
+        
+        $client->save();
+
+        return redirect()->route('client', $id)->with("Данные клиета успешно обновлены");
     }
 }

@@ -23,20 +23,22 @@ return new class extends Migration
             $table->string('login', 80)->unique();
             $table->string('password', 80);
             $table->binary('photo')->nullable();
-        });
-       Schema::create('order_ticket', function (Blueprint $table) {
+        });*/
+       /*Schema::create('order_ticket', function (Blueprint $table) {
             $table->id();
-            $table->foreign('work_shift')->references('id')->on('work_shift');
+            $table->foreign('workShift')->references('id')->on('work_shift');
             $table->foreign('client')->references('id')->on('client');
+            $table->timestamps();
         });
 
         Schema::create('order_pointt', function (Blueprint $table) {
             $table->id();
             $table->foreign('order_ticket')->references('id')->on('order_ticket');
             $table->foreign('work')->references('id')->on('work');
-            $table->foreign('user')->references('id')->on('user');
+            $table->foreign('users')->references('id')->on('users');
             $table->double('price', 20, 2);
             $table->integer('count');
+            $table->timestamps();
         });*/
     }
 
