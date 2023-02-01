@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\WorkController;
 /*
@@ -25,27 +25,34 @@ Route::get('/', function () {
     return view('layuot/home');
 }) -> name('home');
 
-Route::get('/login', [AuthorizationController::class, 'create']) -> name('login');
+Route::get('/auth', [AuthorizationController::class, 'create']) -> name('login');
 
-Route::post('/authorization', [AuthorizationController::class, 'login']) -> name('auth-user');
+Route::post('/auth/login', [AuthorizationController::class, 'loginUsers']) -> name('loginUser');
+/*
 
+Route::post('/auth/register', [AuthController::class, 'createUser']);
+
+Route::post('/auth/login', [AuthController::class, 'loginUser']) -> name('login');
+
+Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
+
+*/
 
 //Admin router
 /*Route::get('/admin/home', function () {
     return view('role/admin/Admin');
 }) -> name('adminHome');*/
 
-Route::get('/avtoclub/users', function () {
-    return view('role/admin/users');
-}) -> name('adminUsers');
 
-Route::get('/avtoclub/new_user', function () {
-    return view('role/admin/newUser');
-}) -> name('adminNewUser');
 
-Route::get('/avtoclub/profile', function () {
-    return view('role/admin/profileUser');
-}) -> name('profile');
+Route::get('/avtoclub/users', [UsersController::class, 'allUsers']) -> name('adminUsers');
+
+Route::get('/avtoclub/new_user', [UsersController::class, 'create']) -> name('adminNewUser');
+
+Route::post('/avtoclub/new_user_add', [UsersController::class, 'store']) -> name('newUserAdd');
+
+Route::get('/avtoclub/{$id}/profile', [UserController::class, 'profil']) -> name('profile');
+
 
 
 
@@ -91,3 +98,6 @@ Route::get('/receivers/clients/delet/{id}', [ClientController::class, 'deletClie
 Route::get('/receivers/clients/{id}/update', [ClientController::class, 'updateClient']) -> name('clientUpdate');
 
 Route::post('/receivers/clients/{id}/update', [ClientController::class, 'updateClientSubmit']) -> name('clientUpdateSubmit');
+
+
+

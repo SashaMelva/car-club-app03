@@ -20,24 +20,24 @@
                 <th>Имя</th>
                 <th>Отчество</th>
             </tr>
-            <!--foreach
+            @foreach($usersData as $userData)
             <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th>{{ $userData-> id}}</th>
+                <th>{{ $userData-> name}}</th>
+                <th>{{ $userData-> surname}}</th>
+                <th>{{ $userData-> patronymic}}</th>
+                <th>{{ $userData-> login}}</th>
+                <th>{{ $userData-> password}}</th>
+                <th>{{ $userData-> category}}</th>
+                <th class="last-column-for-btn"><a href="{{ route('profile', $userData-> id) }}" class="btn btn-light btn-a">Профиль</a></th>
                 <th class="last-column-for-btn"><a class="btn img-btn-fon"><img class="password-img-btn" alt="Открыть профиль сотрудника" src="{{ Vite::asset('resources/images/free-icon-profile.png') }}"></a></th>
             </tr>
-            endforeach-->
+            @endforeach
         </table>
         <div class="menu-list-content">
             <a href="{{ route('adminNewUser') }}" class="btn btn-light btn-a">Добавить</a>
             <button class="btn btn-light btn-list">Уволить</button>
-            <a href="{{ route('profile') }}" class="btn btn-light btn-a">Профиль</a>
+            
         </div>
     </section>
 @endsection

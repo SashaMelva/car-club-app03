@@ -63,7 +63,7 @@ sudo find ./ -type f -exec chmod 755 {} \; // файлы
 //База данных
 ./vendor/bin/sail mysql -u root -h 127.0.0.1 -P 3306
 
-
+./vendor/bin/sail artisan migrate:fresh
 
 docker ps//просмотр запущеных контейнеров
 
@@ -76,3 +76,5 @@ show databases;
 use jeka
 show tables;
 SHOW COLUMNS FROM
+CREATE DATABASE
+DROP DATABASE  

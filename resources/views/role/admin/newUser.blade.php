@@ -10,7 +10,8 @@
     <section class="list-content content-frm-register">
         <div class="form-register-users-skelet">
             <legend class="legend-form legend-new-user">Новый сотрудник</legend>
-            <form class="frm-new-user">
+            <form class="frm-new-user" action="{{ route('newUserAdd') }}" method="POST">
+                @csrf
                 <p class="txt-input-form main-txt-form">Введите данные о новом сотруднике</p>
                 <label for="name" class="txt-input-form">Имя</label>
                 <input id="name" type="text" class="input-form">
@@ -26,8 +27,11 @@
                 </div>
                 <label for="category" class="txt-input-form">Укажите категорию</label>
                 <select id="category" class="slct-form cmb-form">
-                    <option></option>
+                    @foreach($rolesData as $roleData)
+                        <option>{{ $roleData-> id}}</option>
+                    @endforeach
                 </select>
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" /> 
             </form>
                 <div class="content-photo-new-user">
             

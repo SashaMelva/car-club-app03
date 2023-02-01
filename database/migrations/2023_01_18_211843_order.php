@@ -13,33 +13,45 @@ return new class extends Migration
      */
     public function up()
     {
-       
-        /*Schema::create('userr', function (Blueprint $table) {
+        Schema::create('client', function (Blueprint $table) {
             $table->id();
             $table->string('name', 80);
             $table->string('surname', 80);
             $table->string('patronymic', 80)->nullable();
-            $table->foreign('role')->references('id')->on('role');
-            $table->string('login', 80)->unique();
-            $table->string('password', 80);
-            $table->binary('photo')->nullable();
-        });*/
-       /*Schema::create('order_ticket', function (Blueprint $table) {
-            $table->id();
-            $table->foreign('workShift')->references('id')->on('work_shift');
-            $table->foreign('client')->references('id')->on('client');
+            $table->char('phone', 20);
             $table->timestamps();
         });
 
-        Schema::create('order_pointt', function (Blueprint $table) {
+        Schema::create('statusOrder', function (Blueprint $table) {
             $table->id();
-            $table->foreign('order_ticket')->references('id')->on('order_ticket');
-            $table->foreign('work')->references('id')->on('work');
-            $table->foreign('users')->references('id')->on('users');
+            $table->string('status')->nullable();
+            $table->timestamps();
+        });
+       
+        
+       Schema::create('orderTicket', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('idWorkShift')->unsigned();
+            $table->foreign('idWorkShift')->references('id')->on('workShift');
+            $table->unsignedBigInteger('idClient')->unsigned();
+            $table->foreign('idClient')->references('id')->on('client');
+            $table->unsignedBigInteger('idStatusOrder')->unsigned();
+            $table->foreign('idStatusOrder')->references('id')->on('statusOrder');
+            $table->timestamps();
+        });
+
+        Schema::create('orderPoint', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('idOrderTicket')->unsigned();
+            $table->foreign('idOrderTicket')->references('id')->on('orderTicket');
+            $table->unsignedBigInteger('idWork')->unsigned();
+            $table->foreign('idWork')->references('id')->on('work');
             $table->double('price', 20, 2);
             $table->integer('count');
             $table->timestamps();
-        });*/
+        });
+
+        
     }
 
     /**

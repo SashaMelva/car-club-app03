@@ -13,12 +13,31 @@ return new class extends Migration
      */
     public function up()
     {
-       Schema::create('work_shift', function (Blueprint $table) {
+        Schema::create('statusWorkShift', function (Blueprint $table) {
+            $table->id();
+            $table->string('status')->nullable();
+            $table->timestamps();
+        });
+
+       Schema::create('workShift', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->time('start_time');
-            $table->time('end_time');
+            $table->time('startTime');
+            $table->time('endTime');
             $table->string('status')->nullable();
+            $table->unsignedBigInteger('statusWorkShift')->unsigned();
+            $table->foreign('statusWorkShift')->references('id')->on('statusWorkShift');
+            $table->timestamps();
+        });
+
+       
+
+        Schema::create('workerForWorkShift', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('idWorkShift')->unsigned();
+            $table->foreign('idWorkShift')->references('id')->on('workShift');
+            $table->unsignedBigInteger('idUser')->unsigned();
+            $table->foreign('idUser')->references('id')->on('userr');
             $table->timestamps();
         });
     }

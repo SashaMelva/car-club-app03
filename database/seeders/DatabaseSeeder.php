@@ -12,7 +12,17 @@ class DatabaseSeeder extends Seeder
     
     public function run()
     {
-        DB::table('role')->insert([
+        $this->call('RoleUserSeeder');
+
+        this->command->info('Таблица пользователей заполнена данными!');
+    }
+}
+class RoleUserSeeder extends Seeder {
+    public function run()
+    {
+        DB::table('role')->delete();
+
+        Role::create([
 
             ['role_name ' => 'Администратор', 'description' => 'Функционал администратора:
                                                                 • Регистрация новых пользователей в системе;
