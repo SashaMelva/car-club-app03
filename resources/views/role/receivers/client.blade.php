@@ -17,7 +17,7 @@
                 <th class="last-column-for-btn"></th>
                 <th class="last-column-for-btn"></th>
             </tr>
-            @foreach($clientsData as $clientData)
+            @foreach ($clientsData as $clientData)
             <tr>
                 <th>{{ $clientData-> id}}</th>
                 <th>{{ $clientData-> name}}</th>
