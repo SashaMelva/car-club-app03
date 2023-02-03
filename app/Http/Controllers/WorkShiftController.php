@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Work;
 use App\Models\WorkShift;
 
-class WorkController extends Controller
+class WorkShiftController extends Controller
 {
     public function create() {
         return view('role/admin/newWorkShift');

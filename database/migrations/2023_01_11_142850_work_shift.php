@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('statusWorkShift', function (Blueprint $table) {
             $table->id();
-            $table->string('status')->nullable();
+            $table->string('statusWorkShiftName')->nullable();
             $table->timestamps();
         });
 
@@ -37,7 +37,7 @@ return new class extends Migration
             $table->unsignedBigInteger('idWorkShift')->unsigned();
             $table->foreign('idWorkShift')->references('id')->on('workShift');
             $table->unsignedBigInteger('idUser')->unsigned();
-            $table->foreign('idUser')->references('id')->on('userr');
+            $table->foreign('idUser')->references('id')->on('userrs');
             $table->timestamps();
         });
     }

@@ -16,6 +16,10 @@ class ClientController extends Controller
  * @return Illuminate\Http\Response
  */
     
+    public function allData() {
+        return view('role/receivers/client', ['clientsData' => Client::all()]);
+    }
+    
     public function create() {
        return view('role/receivers/newClient');
     }
@@ -35,9 +39,6 @@ class ClientController extends Controller
         return redirect()->route('client')->with("Клиет успешно создан");
     } 
 
-    public function allData() {
-        return view('role/receivers/client', ['clientsData' => Client::all()]);
-    }
 
     public function deletClient($id) {
         Client::find($id)->delete();

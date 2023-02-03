@@ -20,9 +20,24 @@
                 <th>Выполнения</th>
                 <th>Наименование</th>
                 <th>Цена</th>
-                <th>Нмер телефона</th>
+                <th>Номер телефона</th>
                 <th>ФИО</th>
-            </tr>
+            </tr> 
+            @foreach ($ordersData as $orderData)
+                <th>{{ $orderData-> id }}</th>
+                <th></th>
+                <th></th>
+                @foreach ($ordersDataPoint as $orderDataPoint)
+                    <th>{{ $orderDataPoint-> idWork }}</th>
+                    <th>{{ $orderDataPoint-> price }}</th>
+                @endforeach
+                <th></th>
+                <th>{{ $orderData-> idClient }}</th>
+                <th>{{ $orderData-> idClient  }}</th>
+                <th>{{ $orderData-> idStatusOrder }}</th>
+                <th>{{ $orderData-> idWorkShift }}</th>
+                <th class="last-column-for-btn"><a href="{{ route('orderDelet', $orderData-> id) }}" class="btn img-btn-fon"><img class="password-img-btn" alt="Удалить клиента" src="{{ Vite::asset('resources/images/rejected.png') }}"></a></th>
+            @endforeach
         </table>
         <div class="menu-list-content">
             <a href="{{ route('newOrder') }}" class="btn btn-light btn-a">Создать</a>

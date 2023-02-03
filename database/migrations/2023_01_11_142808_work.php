@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('work', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 80);
+            $table->string('workName', 80);
             $table->text('description', 240)->nullable();
             $table->timestamps();
         });
@@ -23,22 +23,23 @@ return new class extends Migration
 
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('role_name', 20);
+            $table->string('roleName', 20);
             $table->text('description', 240)->nullable();
             $table->timestamps();
         });
 
 
-        Schema::create('userr', function (Blueprint $table) {
+        Schema::create('userrs', function (Blueprint $table) {
             $table->id();
             $table->string('name', 80);
             $table->string('surname', 80);
             $table->string('patronymic', 80)->nullable();
-            $table->unsignedBigInteger('idRoles')->unsigned();
+            $table->unsignedBigInteger('idRoles')->unsigned()->nullable();
             $table->foreign('idRoles')->references('id')->on('roles')->nullable();
-            $table->string('login', 80)->unique();
-            $table->string('password', 80);
+            $table->string('login', 80)->nullable();
+            $table->string('password', 80)->nullable();
             $table->binary('photo')->nullable();
+            $table->timestamps();
         });
     }
 

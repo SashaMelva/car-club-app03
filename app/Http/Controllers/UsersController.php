@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
-use App\Models\Users;
+use App\Http\Requests\UsersRequest;
+use App\Models\Userr;
 use App\Models\Role;
 
 class UsersController extends Controller
@@ -16,7 +16,7 @@ class UsersController extends Controller
  * @return Illuminate\Http\Response
  */
     public function allUsers() {
-        return view('role/admin/users', ['usersData' => Users::all()], ['rolesData' => Role::all()]);
+        return view('role/admin/users', ['usersData' => Userr::all()], ['rolesData' => Role::all()]);
     } 
 
     public function create() {
@@ -26,7 +26,7 @@ class UsersController extends Controller
     
 
     public function store(UsersRequest $request) {
-        $user = new Users();
+        $user = new Userr();
 
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');
@@ -38,15 +38,15 @@ class UsersController extends Controller
 
         $user->save();
 
-        return redirect()->route('adminUsers');
+        return redirect()->route('adminUsers')->with("Клиет успешно создан");
     }
 
     public function delet($id) {
         Users::find($id)->delete();
-        return view('role/admin/users', ['usersData' => Users::all()]);
+        return view('role/admin/users', ['usersData' => Userr::all()]);
     }
     public function profil($id) {
-        $user = new Users();
+        $user = new Userr();
         return view('role/admin/profileUser', ['userseData' => $user->find($id)]);
     }
 }

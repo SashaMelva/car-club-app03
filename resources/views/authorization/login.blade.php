@@ -25,7 +25,7 @@
     </script>
     
     <section class="autorization-form form-content-login test-authorization">
-        <form class="frm-authoriz" method="POST" action="{{ route('auth-user') }}"> 
+        <form class="frm-authoriz" method="POST" action="{{ route('login') }}"> 
             @csrf
             <legend class="legend-form">Авторизация</legend>
             <p class="txt-input-form" >Введите логин</p>

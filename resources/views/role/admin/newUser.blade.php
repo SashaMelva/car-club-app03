@@ -4,8 +4,6 @@
 
 
 @section('main-content')
-   
-
 
     <section class="list-content content-frm-register">
         <div class="form-register-users-skelet">
@@ -14,23 +12,25 @@
                 @csrf
                 <p class="txt-input-form main-txt-form">Введите данные о новом сотруднике</p>
                 <label for="name" class="txt-input-form">Имя</label>
-                <input id="name" type="text" class="input-form">
-                <label for="surname" class="txt-input-form">Фамилия</label>
-                <input id="surname" type="text" class="input-form">
+                <input id="name" name="name" type="text" class="input-form">
+                <label for="surname" class="txt-input-form">Фамилия</label> 
+                <input id="surname"  name="surname" type="text" class="input-form">
                 <label for="patronymic" class="txt-input-form">Отчество</label>
-                <input id="patronymic" type="text" class="input-form">
+                <input id="patronymic" name="patronymic" type="text" class="input-form">
                 <label for="login" class="txt-input-form">Логин</label>
-                <input id="login" type="text" class="input-form">
+                <input id="login"  name="login" type="text" class="input-form">
                 <label for="password" class="txt-input-form">Пароль</label>
                 <div  class="input-password">
-                    <input id="password" class="input-form input-password" type="password">
+                    <input id="password" name="password" class="input-form input-password" type="password">
                 </div>
                 <label for="category" class="txt-input-form">Укажите категорию</label>
-                <select id="category" class="slct-form cmb-form">
+                <select id="category" name="category" class="slct-form cmb-form">
                     @foreach($rolesData as $roleData)
-                        <option>{{ $roleData-> id}}</option>
+                        <option>{{ $roleData-> roleName}}</option>
                     @endforeach
                 </select>
+               
+                <button type="submit" class="btn btn-dark btn-submit btn-save btn-list">Сохранить</button>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" /> 
             </form>
                 <div class="content-photo-new-user">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             <a href="{{ route('adminUsers') }}" class="btn btn-a btn-dark btn-submit btn-revoke-for-user btn-list">Отмена</a>
-            <button class="btn btn-dark btn-submit btn-save btn-list">Сохранить</button>
+            
         </div>
         <button class="btn-chk-password btn-new-user-close" onclick="passwordChecked()"><img class="password-img-btn" src="{{ Vite::asset('resources/images/abstract-1152.png')}}"></button>
     </section>

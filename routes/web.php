@@ -6,7 +6,8 @@ use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\WorkController;
+use App\Http\Controllers\WorkShiftController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,9 +27,9 @@ Route::get('/', function () {
 }) -> name('home');
 
 Route::get('/auth', [AuthorizationController::class, 'create']) -> name('login');
-
-Route::post('/auth/login', [AuthorizationController::class, 'loginUsers']) -> name('loginUser');
 /*
+Route::post('/auth/login', [AuthorizationController::class, 'loginUsers']) -> name('loginUser');
+
 
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 
@@ -49,16 +50,16 @@ Route::get('/avtoclub/users', [UsersController::class, 'allUsers']) -> name('adm
 
 Route::get('/avtoclub/new_user', [UsersController::class, 'create']) -> name('adminNewUser');
 
-Route::post('/avtoclub/new_user_add', [UsersController::class, 'store']) -> name('newUserAdd');
+Route::post('/avtoclub/user_add', [UsersController::class, 'store']) -> name('newUserAdd');
 
 Route::get('/avtoclub/{$id}/profile', [UserController::class, 'profil']) -> name('profile');
 
 
 
 
-Route::get('/avtoclub/work_shift', [WorkController::class, 'allData']) -> name('adminWorkShift');
+Route::get('/avtoclub/work_shift', [WorkShiftController::class, 'allData']) -> name('adminWorkShift');
 
-Route::get('/new_work_shift', [WorkController::class, 'create']) -> name('newWorkShift');
+Route::get('/new_work_shift', [WorkShiftController::class, 'create']) -> name('newWorkShift');
 
 /*Route::get('/avtoclub/new_shift', function () {
     return view('role/admin/NewUser');
@@ -75,14 +76,11 @@ Route::get('/mechanic/home', function () {
 }) -> name('mechanicHome');
 
 //Receivers router
-Route::get('/receivers/order', function () {
-    return view('role/receivers/order');
-}) -> name('order');
+Route::get('/receivers/order', [OrderController::class, 'allDataOrder']) -> name('order');
 
-Route::get('/receivers/new_order', function () {
-    return view('role/receivers/newOrder');
-}) -> name('newOrder');
+Route::get('/receivers/new_order', [OrderController::class, 'create']) -> name('newOrder');
 
+Route::get('/receivers/order/{id}/delete', [OrderController::class, 'deletOrder']) -> name('orderDelet');
 /*Route::get('/receivers/clients', function () {
     return view('role/receivers/client');
 }) -> name('client');*/

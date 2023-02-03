@@ -24,7 +24,7 @@ return new class extends Migration
 
         Schema::create('statusOrder', function (Blueprint $table) {
             $table->id();
-            $table->string('status')->nullable();
+            $table->string('statusOrderName')->nullable();
             $table->timestamps();
         });
        
@@ -45,7 +45,7 @@ return new class extends Migration
             $table->unsignedBigInteger('idOrderTicket')->unsigned();
             $table->foreign('idOrderTicket')->references('id')->on('orderTicket');
             $table->unsignedBigInteger('idWork')->unsigned();
-            $table->foreign('idWork')->references('id')->on('work');
+            $table->foreign('idWork')->references('id')->on('work'); 
             $table->double('price', 20, 2);
             $table->integer('count');
             $table->timestamps();
