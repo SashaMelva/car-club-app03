@@ -57,9 +57,7 @@
                     <a href="#" class="btn img-btn-fon btn-save-status"><img class="password-img-btn" alt="Сохранить статус" src="{{ Vite::asset('resources/images/icon-download.png') }}"></a>
                 </th>
                 <th>{{ $orderData-> idWorkShift }}</th>
-                 
             @endforeach
-                
         </table>
         <div class="menu-list-content">
             <a href="{{ route('newOrder') }}" class="btn btn-light btn-a">Создать</a>

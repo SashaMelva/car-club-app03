@@ -22,7 +22,12 @@ class WorkShiftController extends Controller
     }
 
     public function create() {
-        return view('role/admin/newWorkShift');
+        $workShiftsStatus =  DB::table('statusWorkShift')
+                            ->get();
+        $workShiftUsers = DB::table('userr')
+                            ->join('roles', 'userr.idRole', '=', 'roles.id')
+                            ->get();
+        return view('role/admin/newWorkShift', ['workShiftsStatus' => $workShiftsStatus, 'workShiftUsers' => $workShiftUsers]);
     }
 
     public function store() {

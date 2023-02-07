@@ -50,8 +50,7 @@
                         </select>
                         <a href="#" class="btn img-btn-fon btn-save-status"><img class="password-img-btn" alt="Сохранить статус" src="{{ Vite::asset('resources/images/icon-download.png') }}"></a>
                     </th>
-                    @endforeach
-                    </th>
+                @endforeach
         </table>
         <div class="menu-list-content">
             <a href="{{ route('newWorkShift') }}" class="btn btn-light btn-a">Создать смену</a>
