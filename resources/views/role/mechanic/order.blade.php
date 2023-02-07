@@ -55,15 +55,12 @@
                         @endforeach
                     </select>
                     <a href="#" class="btn img-btn-fon btn-save-status"><img class="password-img-btn" alt="Сохранить статус" src="{{ Vite::asset('resources/images/icon-download.png') }}"></a>
+                
                 </th>
                 <th>{{ $orderData-> idWorkShift }}</th>
                  
             @endforeach
-                
         </table>
-        <div class="menu-list-content">
-            <a href="{{ route('newOrder') }}" class="btn btn-light btn-a">Создать</a>
-        </div>
     </div>
     
 @endsection
@@ -71,8 +68,7 @@
 @section('header')
     @parent
     <ul class="navigation-ul-second">
-        <li><a href="{{ route('order') }}" class="header-nav-a">Заказы</a></li>
-        <li><a href="{{ route('client') }}" class="header-nav-a">Клиенты</a></li>
+        <li><a href="{{ route('mechanicOrder') }}" class="header-nav-a">Заказы</a></li>
         <li><a href="{{ route('login') }}" class="header-nav-a">Выход</a></li>
     </ul>
 @endsection 

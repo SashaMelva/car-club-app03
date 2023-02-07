@@ -22,13 +22,14 @@
             </tr>
             @foreach($usersData as $userData)
             <tr>
-                <th>{{ $userData-> id}}</th>
-                <th>{{ $userData-> name}}</th>
-                <th>{{ $userData-> surname}}</th>
-                <th>{{ $userData-> patronymic}}</th>
-                <th>{{ $userData-> login}}</th>
-                <th>{{ $userData-> password}}</th>
-                <th>{{ $userData-> category}}</th>
+                <th>{{ $userData-> id }}</th>
+                <th>{{ $userData-> surname }}</th>
+                <th>{{ $userData->  name}}</th>
+                <th>{{ $userData-> patronymic }}</th>
+                <th>{{ $userData-> login }}</th>
+                <th>{{ $userData-> password }}</th> 
+                <th>{{ $userData -> roleName}}</th>
+              
                 <th class="last-column-for-btn"><a href="{{ route('profile', $userData-> id) }}" class="btn btn-light btn-a">Профиль</a></th>
                 <th class="last-column-for-btn"><a class="btn img-btn-fon"><img class="password-img-btn" alt="Открыть профиль сотрудника" src="{{ Vite::asset('resources/images/free-icon-profile.png') }}"></a></th>
             </tr>

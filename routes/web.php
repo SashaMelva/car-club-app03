@@ -65,15 +65,16 @@ Route::get('/new_work_shift', [WorkShiftController::class, 'create']) -> name('n
     return view('role/admin/NewUser');
 }) -> name('adminNewUser');*/
 
-Route::get('/avtoclub/order', function () {
-    return view('role/admin/order');
-}) -> name('adminOrder');
+Route::get('/avtoclub/order', [OrderController::class, 'adminDataOrder']) -> name('adminOrder');
 
 Route::get('/user/{id}', [UserController::class, 'show']);
+
+
 //Mechanic router
-Route::get('/mechanic/home', function () {
-    return view('role/mechanic/mechanic');
-}) -> name('mechanicHome');
+
+Route::get('/mechanic/order', [OrderController::class, 'mechanicDataOrder']) -> name('mechanicOrder');
+
+
 
 //Receivers router
 Route::get('/receivers/order', [OrderController::class, 'allDataOrder']) -> name('order');

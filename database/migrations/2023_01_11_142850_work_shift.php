@@ -9,9 +9,9 @@ return new class extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
+     * @return void 
      */
-    public function up()
+    public function up() 
     {
         Schema::create('statusWorkShift', function (Blueprint $table) {
             $table->id();
@@ -20,13 +20,13 @@ return new class extends Migration
         });
 
        Schema::create('workShift', function (Blueprint $table) {
-            $table->id();
+            $table->id(); 
             $table->date('date');
             $table->time('startTime');
             $table->time('endTime');
             $table->string('status')->nullable();
-            $table->unsignedBigInteger('statusWorkShift')->unsigned();
-            $table->foreign('statusWorkShift')->references('id')->on('statusWorkShift');
+            $table->unsignedBigInteger('idStatusWorkShift')->unsigned();
+            $table->foreign('idStatusWorkShift')->references('id')->on('statusWorkShift');
             $table->timestamps();
         });
 
@@ -37,7 +37,7 @@ return new class extends Migration
             $table->unsignedBigInteger('idWorkShift')->unsigned();
             $table->foreign('idWorkShift')->references('id')->on('workShift');
             $table->unsignedBigInteger('idUser')->unsigned();
-            $table->foreign('idUser')->references('id')->on('userrs');
+            $table->foreign('idUser')->references('id')->on('userr');
             $table->timestamps();
         });
     }

@@ -60,6 +60,13 @@ a:focus{
     padding: 0px 5px;
     border: var(--primary-rest) solid 3px;
 }
+
+.second-th{
+    margin: 0px;
+    padding: 0px;
+    border: solid 0px;
+}
+
 .last-column-for-btn{
     border: var(--primary-rest) solid 0px;
 }
@@ -397,7 +404,10 @@ li{
     justify-content: center;
     height: auto;
 }
-
+.content-frm-order{
+    justify-content: center;
+    height: auto;
+}
 .content-section{
     margin: 0px;
     min-width: 1160px;
@@ -454,4 +464,24 @@ li{
 }
 
 
+.inpt-tbl-frm {
+    width:5em;
+    border: solid 2px var(--basic-white);
+}
 
+.inpt-hidden {
+    border: solid 0px;
+}
+.btn-content-form-newOrder{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cmb-order{
+    width: auto;
+}
+
+.btn-save-status{
+    width: 2em;
+    margin-left: 65%;
+}

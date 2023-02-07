@@ -3,12 +3,13 @@
 @section('titel')Заказы@endsection
 
 @section('main-content')
-    <div class="list-content">
+    <div class="list-content content-whith-button">
         <table class="tbl-style-light">
             <caption>Заказы</caption>
             <tr>
                 <th rowspan="2">№</th>
-                <th colspan="2">Дата и время</th>
+                <th rowspan="2">Дата</th>
+                <th rowspan="2">Время</th>
                 <th colspan="2">Работы</th>
                 <th rowspan="2">Стоимость</th>
                 <th colspan="2">Клиент</th>
@@ -16,15 +17,44 @@
                 <th rowspan="2">№ Смены</th>
             </tr>
             <tr>
-                <th>Зказа</th>
-                <th>Выполнения</th>
                 <th>Наименование</th>
                 <th>Цена</th>
-                <th>Нмер телефона</th>
+                <th>Номер телефона</th>
                 <th>ФИО</th>
-            </tr>
+                
+            </tr> 
+            @foreach ($ordersData as $orderData)
+                <th>{{ $orderData-> id }}</th>
+                <th>{{ $orderData-> date }}</th>
+                <th></th> 
+                <th>
+                    <table>
+                        @foreach ($ordersPointData as $orderPointData)
+                            <tr class="second-th">
+                                <th class="second-th">{{$orderPointData-> workName}}</th>
+                            </tr>
+                        @endforeach
+                    </table>
+                </th>
+                <th>
+                    <table>
+                        @foreach ($ordersPointData as $orderPointData)
+                            <tr class="second-th">
+                                <th class="second-th">{{$orderPointData-> price}}</th>
+                            </tr>
+                        @endforeach
+                    </table>
+                </th>
+                <th></th>
+                <th>{{ $orderData-> phone }}</th>
+                <th>{{ $orderData-> surname}} {{$orderData-> name }} {{$orderData-> patronymic }}</th>
+                <th>{{ $orderData-> statusOrderName }}</th>
+                <th>{{ $orderData-> idWorkShift }}</th>
+                 
+            @endforeach
         </table>
     </div>
+    
 @endsection
 
 @section('header')

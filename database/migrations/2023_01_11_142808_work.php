@@ -29,13 +29,13 @@ return new class extends Migration
         });
 
 
-        Schema::create('userrs', function (Blueprint $table) {
+        Schema::create('userr', function (Blueprint $table) {
             $table->id();
             $table->string('name', 80);
             $table->string('surname', 80);
             $table->string('patronymic', 80)->nullable();
-            $table->unsignedBigInteger('idRoles')->unsigned()->nullable();
-            $table->foreign('idRoles')->references('id')->on('roles')->nullable();
+            $table->unsignedBigInteger('idRole')->unsigned()->nullable();
+            $table->foreign('idRole')->references('id')->on('roles')->nullable();
             $table->string('login', 80)->nullable();
             $table->string('password', 80)->nullable();
             $table->binary('photo')->nullable();

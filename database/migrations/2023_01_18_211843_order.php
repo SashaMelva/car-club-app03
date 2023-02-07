@@ -46,7 +46,7 @@ return new class extends Migration
             $table->foreign('idOrderTicket')->references('id')->on('orderTicket');
             $table->unsignedBigInteger('idWork')->unsigned();
             $table->foreign('idWork')->references('id')->on('work'); 
-            $table->double('price', 20, 2);
+            $table->integer('price');
             $table->integer('count');
             $table->timestamps();
         });

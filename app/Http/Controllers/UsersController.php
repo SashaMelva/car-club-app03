@@ -6,17 +6,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UsersRequest;
 use App\Models\Userr;
 use App\Models\Role;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
-    /**
+    /** 
  * Store a new blog post.
  *
  * @param  \App\Http\Requests\StorePostRequest  $request
  * @return Illuminate\Http\Response
  */
     public function allUsers() {
-        return view('role/admin/users', ['usersData' => Userr::all()], ['rolesData' => Role::all()]);
+        $usersData = DB::table('userr')->join('roles', 'userr.idRole', '=', 'roles.id')->get();
+        return view('role/admin/users', ['usersData' => $usersData]);
     } 
 
     public function create() {

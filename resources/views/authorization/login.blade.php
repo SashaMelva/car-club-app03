@@ -56,7 +56,7 @@
             <label>Кто ты?</label>
             <a href="{{ route('adminUsers') }}" class="btn btn-light btn-a">Администратор</a>
             <a href="{{ route('order') }}" class="btn btn-light btn-a">Приемщик работ</a>
-            <a href="{{ route('mechanicHome') }}" class="btn btn-light btn-a">Автослесарь</a>
+            <a href="{{ route('mechanicOrder') }}" class="btn btn-light btn-a">Автослесарь</a>
         </form>
     </section>
     
