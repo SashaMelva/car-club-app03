@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\OrderTicket;
 use App\Models\OrderPoint;
+use App\Http\Requests\OrderRequest;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -52,7 +53,7 @@ class OrderController extends Controller
         return view('role/admin/order', ['ordersData' => $ordersData, 'ordersPointData' => $ordersPoint]);
     } 
 
-
+   
 
     public function create() {
         $ordersData = DB::table('orderTicket')->get();
@@ -67,4 +68,16 @@ class OrderController extends Controller
         OrderTicket::find($id)->delete();
         return view('role/receivers/order', ['ordersData' => OrderTicket::all()], ['ordersDataPoint' => OrderPoint::all()]);
     }
+
+    public function updateOrderStatus($id, OrderRequest $request) {
+        $order = OrderTicket::find($id);
+       // $status = $request->option('statusOrder');
+        $order->idStatusOrder = '4';
+
+        $order->save();
+
+        return redirect()->route('order')->with("Данные клиета успешно обновлены");
+        //$status = DB::table('statusOrder')->where('id', '=', '$id')->get();
+
+    } 
 }

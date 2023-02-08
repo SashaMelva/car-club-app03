@@ -15,6 +15,7 @@ class WorkShiftController extends Controller
                             ->get();
         $workersData = DB::table('workerForWorkShift')
                             ->join('userr', 'workerForWorkShift.idUser', '=', 'userr.id')
+                            ->join('roles', 'userr.idRole', '=', 'roles.id')
                             ->get();
         $workShiftsStatus =  DB::table('statusWorkShift')
                             ->get();

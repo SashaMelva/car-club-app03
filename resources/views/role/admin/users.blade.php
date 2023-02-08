@@ -29,16 +29,14 @@
                 <th>{{ $userData-> login }}</th>
                 <th>{{ $userData-> password }}</th> 
                 <th>{{ $userData -> roleName}}</th>
-              
-                <th class="last-column-for-btn"><a href="{{ route('profile', $userData-> id) }}" class="btn btn-light btn-a">Профиль</a></th>
-                <th class="last-column-for-btn"><a class="btn img-btn-fon"><img class="password-img-btn" alt="Открыть профиль сотрудника" src="{{ Vite::asset('resources/images/free-icon-profile.png') }}"></a></th>
+                <th></th>
+                <th class="last-column-for-btn"><a href="{{ route('delete', $userData-> id) }}" class="btn img-btn-fon"><img class="password-img-btn" alt="Удалить клиента" src="{{ Vite::asset('resources/images/rejected.png') }}"></a></th>
+                <th class="last-column-for-btn"><a href="{{ route('profile', $userData-> id) }}" class="btn img-btn-fon"><img class="password-img-btn" alt="Открыть профиль сотрудника" src="{{ Vite::asset('resources/images/free-icon-profile.png') }}"></a></th>
             </tr>
             @endforeach
         </table>
         <div class="menu-list-content">
             <a href="{{ route('adminNewUser') }}" class="btn btn-light btn-a">Добавить</a>
-            <button class="btn btn-light btn-list">Уволить</button>
-            
         </div>
     </section>
 @endsection

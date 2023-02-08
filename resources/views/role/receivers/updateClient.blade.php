@@ -18,7 +18,7 @@
                 <label for="phone" class="txt-input-form" >Номер телефона</label>
                 <input id="phone" name="phone" type="text" value="{{ $clientData->phone }}" class="input-form">
                 @include('inc.messages')
-                <button type="submit" class="btn btn-dark btn-submit btn-list">Обновить</button>
+                <button type="submit" class="btn btn-dark btn-submit btn-list">Сохранить изменения</button>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />   
             </form>
         <a href="{{ route('client') }}" class="btn btn-a btn-dark btn-revoke btn-list">Отмена</a>

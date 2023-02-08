@@ -37,7 +37,7 @@
                         <table>
                             @foreach ($workersData as $workerData)
                             <tr class="second-th">
-                                <th class="second-th">{{$workerData-> idRole}}</th>
+                                <th class="second-th">{{$workerData-> roleName}}</th>
                             </tr>
                             @endforeach
                         </table>

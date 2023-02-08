@@ -44,11 +44,15 @@ class UsersController extends Controller
     }
 
     public function delet($id) {
-        Users::find($id)->delete();
+        Userr::find($id)->delete();
         return view('role/admin/users', ['usersData' => Userr::all()]);
     }
     public function profil($id) {
         $user = new Userr();
-        return view('role/admin/profileUser', ['userseData' => $user->find($id)]);
+        return view('role/admin/profileUser', ['userData' => $user->find($id)]);
+    } 
+
+    public function updateSubmit() {
+
     }
 }

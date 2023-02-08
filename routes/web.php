@@ -40,9 +40,6 @@ Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
 */
 
 //Admin router
-/*Route::get('/admin/home', function () {
-    return view('role/admin/Admin');
-}) -> name('adminHome');*/
 
 
 
@@ -52,8 +49,11 @@ Route::get('/avtoclub/new_user', [UsersController::class, 'create']) -> name('ad
 
 Route::post('/avtoclub/user_add', [UsersController::class, 'store']) -> name('newUserAdd');
 
-Route::get('/avtoclub/{$id}/profile', [UserController::class, 'profil']) -> name('profile');
+Route::get('/avtoclub/{id}/profile', [UsersController::class, 'profil']) -> name('profile');
 
+Route::get('/avtoclub/{id}/update', [UsersController::class, 'updateSubmit']) -> name('updateUserSubmit');
+
+Route::get('/avtoclub/{id}/delete', [UsersController::class, 'delet']) -> name('delete');
 
 
 
@@ -61,13 +61,10 @@ Route::get('/avtoclub/work_shift', [WorkShiftController::class, 'allData']) -> n
 
 Route::get('/new_work_shift', [WorkShiftController::class, 'create']) -> name('newWorkShift');
 
-/*Route::get('/avtoclub/new_shift', function () {
-    return view('role/admin/NewUser');
-}) -> name('adminNewUser');*/
 
 Route::get('/avtoclub/order', [OrderController::class, 'adminDataOrder']) -> name('adminOrder');
 
-Route::get('/user/{id}', [UserController::class, 'show']);
+//Route::get('/user/{id}', [UserController::class, 'show']);
 
 
 //Mechanic router
@@ -82,6 +79,10 @@ Route::get('/receivers/order', [OrderController::class, 'allDataOrder']) -> name
 Route::get('/receivers/new_order', [OrderController::class, 'create']) -> name('newOrder');
 
 Route::get('/receivers/order/{id}/delete', [OrderController::class, 'deletOrder']) -> name('orderDelet');
+
+Route::post('/receivers/order/update/{id}', [OrderController::class, 'updateOrderStatus']) -> name('updateOrderStatus');
+
+
 /*Route::get('/receivers/clients', function () {
     return view('role/receivers/client');
 }) -> name('client');*/

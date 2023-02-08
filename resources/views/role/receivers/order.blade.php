@@ -49,12 +49,16 @@
                 <th>{{ $orderData-> phone }}</th>
                 <th>{{ $orderData-> surname}} {{$orderData-> name }} {{$orderData-> patronymic }}</th>
                 <th>
+                    <form action="{{ route('updateOrderStatus', $orderData-> id) }}" method="POST">
                     <select id="statusOrder" name="statusOrder" class="inpt-hidden slct-form cmb-form cmb-order">
                         @foreach ($ordersStatus as $orderStatus)
                             <option>{{ $orderStatus-> statusOrderName }}</option>
                         @endforeach
                     </select>
-                    <a href="#" class="btn img-btn-fon btn-save-status"><img class="password-img-btn" alt="Сохранить статус" src="{{ Vite::asset('resources/images/icon-download.png') }}"></a>
+                    <button type="submit" class="btn img-btn-fon btn-save-status"><img class="password-img-btn" alt="Сохранить статус" src="{{ Vite::asset('resources/images/icon-download.png') }}"></button>
+                    </form>
+                    {{$orderData-> statusOrderName}}
+
                 </th>
                 <th>{{ $orderData-> idWorkShift }}</th>
             @endforeach
@@ -63,7 +67,6 @@
             <a href="{{ route('newOrder') }}" class="btn btn-light btn-a">Создать</a>
         </div>
     </div>
-    
 @endsection
 
 @section('header')
