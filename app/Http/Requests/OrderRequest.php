@@ -14,7 +14,7 @@ class OrderRequest extends FormRequest
     
      public function authorize()
      {
-        return false;
+        return true;
      }
 
     /**
@@ -23,10 +23,12 @@ class OrderRequest extends FormRequest
      * @return array<string, mixed>
      */
     public function rules() {
-        
+        return [
+        ];
     }
 
     public function messages() {
-        
+        return [
+        ];
     }
 }

@@ -1,6 +1,8 @@
 @extends('./index')
 
-@section('titel')Заказы@endsection
+@section('titel')
+    Заказы
+@endsection
 
 @section('main-content')
     <div class="list-content content-whith-button">
@@ -21,17 +23,17 @@
                 <th>Цена</th>
                 <th>Номер телефона</th>
                 <th>ФИО</th>
-                
-            </tr> 
+
+            </tr>
             @foreach ($ordersData as $orderData)
-                <th>{{ $orderData-> id }}</th>
-                <th>{{ $orderData-> date }}</th>
-                <th></th> 
+                <th>{{ $orderData->id }}</th>
+                <th>{{ $orderData->date }}</th>
+                <th></th>
                 <th>
                     <table>
                         @foreach ($ordersPointData as $orderPointData)
                             <tr class="second-th">
-                                <th class="second-th">{{$orderPointData-> workName}}</th>
+                                <th class="second-th">{{ $orderPointData->workName }}</th>
                             </tr>
                         @endforeach
                     </table>
@@ -40,29 +42,39 @@
                     <table>
                         @foreach ($ordersPointData as $orderPointData)
                             <tr class="second-th">
-                                <th class="second-th">{{$orderPointData-> price}}</th>
+                                <th class="second-th">{{ $orderPointData->price }}</th>
                             </tr>
                         @endforeach
                     </table>
                 </th>
                 <th></th>
-                <th>{{ $orderData-> phone }}</th>
-                <th>{{ $orderData-> surname}} {{$orderData-> name }} {{$orderData-> patronymic }}</th>
-                <th>
-                    <select id="statusOrder" name="statusOrder" class="inpt-hidden slct-form cmb-form cmb-order">
-                        @foreach ($ordersStatus as $orderStatus)
-                            <option>{{ $orderStatus-> statusOrderName }}</option>
-                        @endforeach
-                    </select>
-                    <a href="#" class="btn img-btn-fon btn-save-status"><img class="password-img-btn" alt="Сохранить статус" src="{{ Vite::asset('resources/images/icon-download.png') }}"></a>
-                
+                <th>{{ $orderData->phone }}</th>
+                <th>{{ $orderData->surname }} {{ $orderData->name }} {{ $orderData->patronymic }}</th>
+                <th class="table-status-update">
+                    <form action="{{ route('updateOrderStatusMechanc', $orderData->id) }}" method="POST"
+                        class="frm-status-update">
+                        @csrf
+                        <select id="statusOrders" name="statusOrders" class="inpt-hidden slct-form cmb-form cmb-order">
+                            @foreach ($ordersStatus as $orderStatus)
+                                <option>{{ $orderStatus->statusOrderName }}</option>
+                            @endforeach
+                        </select>
+
+                        <button type="submit" class="btn img-btn-fon btn-save-status"><img class="password-img-btn"
+                                alt="Сохранить статус"
+                                src="{{ Vite::asset('resources/images/icon-download.png') }}"></button>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                    </form>
+
+                    <hr class="line-status-table">
+
+                    {{ $orderData->statusOrderName }}
+
                 </th>
-                <th>{{ $orderData-> idWorkShift }}</th>
-                 
+                <th>{{ $orderData->idWorkShift }}</th>
             @endforeach
         </table>
     </div>
-    
 @endsection
 
 @section('header')
@@ -71,4 +83,4 @@
         <li><a href="{{ route('mechanicOrder') }}" class="header-nav-a">Заказы</a></li>
         <li><a href="{{ route('login') }}" class="header-nav-a">Выход</a></li>
     </ul>
-@endsection 
+@endsection

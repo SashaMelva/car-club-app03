@@ -69,8 +69,9 @@ Route::get('/avtoclub/order', [OrderController::class, 'adminDataOrder']) -> nam
 
 //Mechanic router
 
-Route::get('/mechanic/order', [OrderController::class, 'mechanicDataOrder']) -> name('mechanicOrder');
+Route::get('/mechanic/order', [OrderController::class, 'mechanicDataOrder']) -> name('mechanicOrder'); 
 
+Route::post('/mechanic/order/update/{id}', [OrderController::class, 'updateOrderStatus']) -> name('updateOrderStatus');
 
 
 //Receivers router
@@ -80,7 +81,7 @@ Route::get('/receivers/new_order', [OrderController::class, 'create']) -> name('
 
 Route::get('/receivers/order/{id}/delete', [OrderController::class, 'deletOrder']) -> name('orderDelet');
 
-Route::post('/receivers/order/update/{id}', [OrderController::class, 'updateOrderStatus']) -> name('updateOrderStatus');
+Route::post('/receivers/order/update/{id}', [OrderController::class, 'updateOrderStatus']) -> name('updateOrderStatusMechanc');
 
 
 /*Route::get('/receivers/clients', function () {

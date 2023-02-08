@@ -13,7 +13,7 @@ class UsersRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,6 +27,11 @@ class UsersRequest extends FormRequest
             'surname' => 'required|max:255',
             'patronymic' => 'max:255',
             'phone' => 'required|max:255'
+        ];
+    }
+
+    public function messages() {
+        return [
         ];
     }
 }

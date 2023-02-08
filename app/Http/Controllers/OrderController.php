@@ -71,12 +71,53 @@ class OrderController extends Controller
 
     public function updateOrderStatus($id, OrderRequest $request) {
         $order = OrderTicket::find($id);
-       // $status = $request->option('statusOrder');
-        $order->idStatusOrder = '4';
+       
+        $statusName = $request->input('statusOrders');
+        if ($statusName == 'Принят') {
+            $statusId = '1';
+        }
+        if ($statusName == 'Выполняется') {
+            $statusId = '2';
+        }
+        if ($statusName == 'Готов') {
+            $statusId = '3';
+        }
+        if ($statusName == 'Оплачен') {
+            $statusId = '4';
+        }
 
+        $order->idStatusOrder = $statusId;
         $order->save();
 
-        return redirect()->route('order')->with("Данные клиета успешно обновлены");
+        if ($statusId == '4' || $statusId == '1') {
+            return redirect()->route('order')->with("Статус заказа успешно обновлен");
+        } else {
+            return redirect()->route('mechanicOrder')->with("Статус заказа успешно обновлен");
+        }
+
+        
+
+        
+
+        
+        //$statusId = DB::table('statusOrder')->where('statusOrderName', '=', '$statusName')->dd();
+        /*var_dump($statusName);
+        $statusId = DB::table('statusOrder')
+                        ->when($statusName, function($query, $statusName) {
+                            return $query->where('statusOrderName', $statusName);
+                            })
+                            ->dd();*/
+        //echo($statusId);
+        //$order->idStatusOrder = $statusId;
+        //$order->save();
+        //$order = DB::table('orderTicket')->where('id', $id)->update(['idStatusOrder' => $statusId]);
+        /*$order = OrderTicket::find($id);
+        $statusName = $request->input('statusOrder');
+        $statusId = DB::table('statusOrder')->select('id')->where('statusOrderName', '=', $statusName)->get();
+    
+        $order->idStatusOrder => $statusId->id;
+
+        $order->save();*/
         //$status = DB::table('statusOrder')->where('id', '=', '$id')->get();
 
     } 

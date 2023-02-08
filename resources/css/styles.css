@@ -482,8 +482,8 @@ li {
 }
 
 .btn-save-status{ 
-    width: 2em;
-    margin-left: 65%;
+    width: 30px;
+    margin: 0px;
 }
 
 .form-register-work-shift {
@@ -507,4 +507,19 @@ li {
 .cmb-form-work-shift {
     width: auto;
     height: 2em;
+}
+.frm-status-update{
+    display: flex;
+}
+.table-status-update{
+    width: 6em;
+}
+
+.line-status-table{
+    margin: 5px 0px;
+    background-color: var(--primary-rest);
+    height: 0px;
+	border: none;
+	border-top: 3px dashed var(--basic-white);
+    
 }
