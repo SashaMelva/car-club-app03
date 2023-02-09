@@ -51,7 +51,7 @@ Route::post('/avtoclub/user_add', [UsersController::class, 'store']) -> name('ne
 
 Route::get('/avtoclub/{id}/profile', [UsersController::class, 'profil']) -> name('profile');
 
-Route::get('/avtoclub/{id}/update', [UsersController::class, 'updateSubmit']) -> name('updateUserSubmit');
+Route::post('/avtoclub/{id}/update', [UsersController::class, 'updateSubmit']) -> name('updateUserSubmit');
 
 Route::get('/avtoclub/{id}/delete', [UsersController::class, 'delet']) -> name('delete');
 
@@ -59,8 +59,9 @@ Route::get('/avtoclub/{id}/delete', [UsersController::class, 'delet']) -> name('
 
 Route::get('/avtoclub/work_shift', [WorkShiftController::class, 'allData']) -> name('adminWorkShift');
 
-Route::get('/new_work_shift', [WorkShiftController::class, 'create']) -> name('newWorkShift');
+Route::get('/avtoclub/new_work_shift', [WorkShiftController::class, 'create']) -> name('newWorkShift');
 
+Route::post('/avtoclub/work_shift/update/{id}', [WorkShiftController::class, 'updateStatus']) -> name('updateWorkShiftStatus');
 
 Route::get('/avtoclub/order', [OrderController::class, 'adminDataOrder']) -> name('adminOrder');
 
@@ -78,6 +79,8 @@ Route::post('/mechanic/order/update/{id}', [OrderController::class, 'updateOrder
 Route::get('/receivers/order', [OrderController::class, 'allDataOrder']) -> name('order');
 
 Route::get('/receivers/new_order', [OrderController::class, 'create']) -> name('newOrder');
+
+Route::post('/receivers/new_order', [OrderController::class, 'newOrder']) -> name('newOrderSubmit');
 
 Route::get('/receivers/order/{id}/delete', [OrderController::class, 'deletOrder']) -> name('orderDelet');
 

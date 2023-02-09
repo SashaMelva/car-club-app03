@@ -31,7 +31,7 @@
     <section class="list-content content-frm-register">
         <div class="form-register-users-skelet">
             <legend class="legend-form legend-new-user">Профиль сотрудника</legend>
-            <form class="frm-new-user" action="{{ route('updateUserSubmit', $userData-> id) }}" method="POST">
+            <form class="frm-new-user" action="{{ route('updateUserSubmit', $userData->id) }}" method="POST">
                 @csrf
                 <label for="name" class="txt-input-form">Имя</label>
                 <input id="name" type="text" class="input-form" value=" {{ $userData->name }}">
@@ -46,8 +46,10 @@
                     <input id="password" class="input-form input-password" type="password" value=" {{ $userData->password }}">
                 </div>
                 <label for="category" class="txt-input-form">Рабочий профиль</label>
-                <select id="category" class="slct-form cmb-form">
-                    <option></option>
+                <select id="category" name="category" class="slct-form cmb-form">
+                    @foreach($rolesData as $roleData)
+                        <option>{{ $roleData-> roleName}}</option>
+                    @endforeach
                 </select>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" /> 
             </form>

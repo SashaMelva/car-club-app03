@@ -19,7 +19,10 @@ class OrderController extends Controller
         $ordersPoint = DB::table('orderPoint')
                         ->join('work', 'orderPoint.idWork', '=', 'work.id')
                         ->get();
-        $ordersStatus = DB::table('statusOrder')->where('id', '=', '1')->orWhere('id', '=', '4')->get();
+        $ordersStatus = DB::table('statusOrder')
+                        ->where('id', '=', '1')
+                        ->orWhere('id', '=', '4')
+                        ->get();
         return view('role/receivers/order', ['ordersData' => $ordersData, 'ordersPointData' => $ordersPoint, 'ordersStatus' => $ordersStatus]);
     }
 
@@ -96,10 +99,6 @@ class OrderController extends Controller
         }
 
         
-
-        
-
-        
         //$statusId = DB::table('statusOrder')->where('statusOrderName', '=', '$statusName')->dd();
         /*var_dump($statusName);
         $statusId = DB::table('statusOrder')
@@ -121,4 +120,20 @@ class OrderController extends Controller
         //$status = DB::table('statusOrder')->where('id', '=', '$id')->get();
 
     } 
+
+
+    public function newOrder(OrderRequest $request) {
+        $idClient = $request->input('clientOrder');
+        $orderTicket = DB::table('orderTicket')->insert([
+            'idWorkShift' => '1',
+            'idClient' => $idClient,
+            'idStatusOrder' => '1',
+        ])->dd();
+        $orderPoint = DB::table('orderPoint')->insert([
+
+        ]);
+        
+       
+
+    }
 }

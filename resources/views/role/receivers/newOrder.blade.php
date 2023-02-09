@@ -6,20 +6,20 @@
 
 @section('main-content')
     <section class="list-content content-frm-order">
-        <form class="frm-register">
+        <form class="frm-register" method="POST" action="{{ route('newOrderSubmit') }}">
+            @csrf
             <legend class="legend-form">Новый заказ</legend>
             <div class="form-register-users">
 
-                <label for="client" class="txt-input-form">Выберите клиента или <a href="{{ route('newClient') }}">создайте
+                <label for="clientOrder" class="txt-input-form">Выберите клиента или <a href="{{ route('newClient') }}">создайте
                         нового</a></label>
-                <select id="client" name="category" class="slct-form cmb-form">
+                <select id="clientOrder" name="clientOrder" class="slct-form cmb-form">
                     @foreach ($clientsData as $clientData)
-                        <option>{{ $clientData->surname }} {{ $clientData->name }} {{ $clientData->patronymic }}</option>
+                        <option>{{ $clientData->surname }} {{ $clientData->name }}
+                            {{ $clientData->patronymic }}
+                        </option>
                     @endforeach
                 </select>
-
-                <!-- <label for="user" class="txt-input-form">Выберите смену</label>
-                                <input id="user" type="text" class="input-form">-->
 
                 <table id='mainTable' class="tbl-style-light">
                     <caption>Наборы работ</caption>
@@ -42,9 +42,10 @@
                             </select>
                         </th>
                         <th>
-                            <select id="userWork" name="userr" class="inpt-hidden slct-form cmb-form">
+                            <select id="userWork" name="userWork" class="inpt-hidden slct-form cmb-form">
                                 @foreach ($userrsData as $userrData)
-                                    <option>{{ $userrData->surname }} {{ $userrData->name }} {{ $userrData->patronymic }}
+                                    <option>{{ $userrData->surname }} {{ $userrData->name }}
+                                        {{ $userrData->patronymic }}
                                     </option>
                                 @endforeach
                             </select>
@@ -52,16 +53,14 @@
                         <th><input type="text" class="price1 input-form inpt-tbl-frm" placeholder="0"></th>
                         <th><input type="text" class="count1 input-form inpt-tbl-frm" placeholder="0"></th>
                         <th><input type="text" class="summ1 input-form inpt-tbl-frm" placeholder="0" readonly></th>
-                        <!--<th class="q last-column-for-btn">
-                                            <a href="#" class="btn img-btn-fon"><img class="password-img-btn" alt="Удалить пункт заказа" src="{{ Vite::asset('resources/images/rejected.png') }}"></a>
-                                        </th>-->
                     </tr>
                 </table>
                 <button type="submit" class="btn btn-dark btn-submit btn-list">Сохранить</button>
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             </div>
         </form>
         <div class="btn-content-form-newOrder">
-            <a href="{{ route ('order') }}" class="btn btn-a btn-dark btn-list">Отмена</a>
+            <a href="{{ route('order') }}" class="btn btn-a btn-dark btn-list">Отмена</a>
             <button id="addNewRow" class="btn btn-light btn-list">Добавить</button>
         </div>
     </section>
@@ -139,14 +138,12 @@
 
             table.appendChild(elem);
         }
-
-        /* const i = 0;
+/*
+         const i = 0;
          let inptAllSumm = document.querySelector(`input.summ${i}`);
          let inptAllprice = document.querySelector(`input.price${i}`);
          let inptAllcount = document.querySelector(`input.count${i}`);
-             table.appendChild(elem);
-         }
-
+             
          
          document.querySelector(`input.price${i}`).onchange = function () {
              while (i <= countRow) {

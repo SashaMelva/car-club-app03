@@ -42,12 +42,12 @@
                     <table>
                         @foreach ($ordersPointData as $orderPointData)
                             <tr class="second-th">
-                                <th class="second-th">{{ $orderPointData->price }}</th>
+                                <th class="second-th price-work">{{ $orderPointData->price }}</th>
                             </tr>
                         @endforeach
                     </table>
                 </th>
-                <th></th>
+                <th class="summ-price"></th>
                 <th>{{ $orderData->phone }}</th>
                 <th>{{ $orderData->surname }} {{ $orderData->name }} {{ $orderData->patronymic }}</th>
                 <th class="table-status-update">
@@ -77,6 +77,21 @@
             <a href="{{ route('newOrder') }}" class="btn btn-light btn-a">Создать</a>
         </div>
     </div>
+    <script>
+        /*function loadSumm () {
+            
+            let summTh = document.querySelector('th.summ-price'); 
+            let summ = 0;
+            let price = document.querySelectorAll('th.price-work'); 
+            alert(pric.value);
+            for (let i = 0; i < price.length; i++) {
+                summ += price[i];
+            }
+            summTh.innerHTML = summ;
+        //}
+        
+        
+    </script>
 @endsection
 
 @section('header')

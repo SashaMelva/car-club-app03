@@ -1,6 +1,8 @@
 @extends('./index')
 
-@section('titel')Рабочие смены@endsection
+@section('titel')
+    Рабочие смены
+@endsection
 
 @section('main-content')
     <div class="list-content content-whith-button">
@@ -9,7 +11,7 @@
             <tr>
                 <th rowspan="2">№</th>
                 <th rowspan="2">Дата</th>
-                <th colspan="2" >Время</th>
+                <th colspan="2">Время</th>
                 <th colspan="2">Сотрудник</th>
                 <th rowspan="2">Статус</th>
             </tr>
@@ -19,38 +21,53 @@
                 <th>ФИО</th>
                 <th>Рабочий профиль</th>
             </tr>
-                @foreach ($workShiftsData as $workShiftData)
-                    <th>{{ $workShiftData-> id}}</th>
-                    <th>{{ $workShiftData-> date}}</th>
-                    <th>{{ $workShiftData-> startTime}}</th>
-                    <th>{{ $workShiftData-> endTime}}</th>
-                    <th>
-                        <table>
-                            @foreach ($workersData as $workerData)
+            @foreach ($workShiftsData as $workShiftData)
+                <th>{{ $workShiftData->id }}</th>
+                <th>{{ $workShiftData->date }}</th>
+                <th>{{ $workShiftData->startTime }}</th>
+                <th>{{ $workShiftData->endTime }}</th>
+                <th>
+                    <table>
+                        @foreach ($workersData as $workerData)
                             <tr class="second-th">
-                                <th class="second-th">{{$workerData-> name}} {{$workerData-> surname}} {{$workerData-> patronymic}}</th>
+                                <th class="second-th">{{ $workerData->name }} {{ $workerData->surname }}
+                                    {{ $workerData->patronymic }}</th>
                             </tr>
-                            @endforeach
-                        </table>
-                    </th>
-                    <th>
-                        <table>
-                            @foreach ($workersData as $workerData)
+                        @endforeach
+                    </table>
+                </th>
+                <th>
+                    <table>
+                        @foreach ($workersData as $workerData)
                             <tr class="second-th">
-                                <th class="second-th">{{$workerData-> roleName}}</th>
+                                <th class="second-th">{{ $workerData->roleName }}</th>
                             </tr>
-                            @endforeach
-                        </table>
-                    </th>
-                    <th>
-                        <select id="workShiftStatus" name="workShiftStatus" class="inpt-hidden slct-form cmb-form cmb-order">
+                        @endforeach
+                    </table>
+                </th>
+                <th class="table-status-update">
+                    <form action="{{ route('updateWorkShiftStatus', $workShiftData->id) }}" method="POST"
+                        class="frm-status-update">
+                        @csrf
+                        <select id="workShiftStatusSelect" name="workShiftStatusSelect"
+                            class="inpt-hidden slct-form cmb-form cmb-order">
+
                             @foreach ($workShiftsStatus as $workShiftStatus)
-                                <option>{{ $workShiftStatus-> statusWorkShiftName }}</option>
+                                <option>{{ $workShiftStatus->statusWorkShiftName }}</option>
                             @endforeach
                         </select>
-                        <a href="#" class="btn img-btn-fon btn-save-status"><img class="password-img-btn" alt="Сохранить статус" src="{{ Vite::asset('resources/images/icon-download.png') }}"></a>
-                    </th>
-                @endforeach
+
+                        <button type="submit" class="btn img-btn-fon btn-save-status"><img class="password-img-btn"
+                                alt="Сохранить статус"
+                                src="{{ Vite::asset('resources/images/icon-download.png') }}"></button>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                    </form>
+
+                    <hr class="line-status-table">
+
+                    {{ $workShiftStatus->statusWorkShiftName }}
+                </th>
+            @endforeach
         </table>
         <div class="menu-list-content">
             <a href="{{ route('newWorkShift') }}" class="btn btn-light btn-a">Создать смену</a>
@@ -66,4 +83,4 @@
         <li><a href="{{ route('adminOrder') }}" class="header-nav-a">Заказы</a></li>
         <li><a href="{{ route('login') }}" class="header-nav-a">Выход</a></li>
     </ul>
-@endsection  
+@endsection

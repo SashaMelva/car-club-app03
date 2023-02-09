@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\WorkerForWorkShift;
 use App\Models\WorkShift;
+use App\Http\Requests\WorkShiftRequest;
 use Illuminate\Support\Facades\DB;
+
 
 class WorkShiftController extends Controller
 {
@@ -51,5 +53,27 @@ class WorkShiftController extends Controller
 
     public function deletWorkShift() {
 
+    }
+
+    public function updateStatus($id, WorkShiftRequest $request ) {
+        $workShiftData = WorkShift::find($id);
+       
+        $statusNameWork = $request->input('workShiftStatusSelect');
+      
+        if ($statusNameWork == 'Ожидает') {
+            $statusIdWork  = '1';
+        }
+        if ($statusNameWork == 'Окрыто') {
+            $statusIdWork  = '2';
+        }
+        if ($statusNameWork == 'Закрыто') {
+            $statusIdWork  = '3';
+        }
+      
+        $workShiftData->idStatusWorkShift = $statusIdWork;
+        $workShiftData->save();
+        
+        return redirect()->route('adminWorkShift')->with("Статус рабочей смены успешно обновлен");
+        
     }
 }
